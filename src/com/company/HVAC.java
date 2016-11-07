@@ -1,7 +1,5 @@
 package com.company;
 
-
-
 import java.util.LinkedList;
 import java.util.Date;
 import java.util.Scanner;
@@ -149,7 +147,8 @@ public class HVAC {
 
         System.out.println("1. Add service call for furnace");
         System.out.println("2. Add service call for AC unit");
-        System.out.println("3. Quit");
+        System.out.println("3. Add service call for Water Heater unit");
+        System.out.println("4. Quit");
 
         int choice = getPositiveIntInput();
 
@@ -193,7 +192,21 @@ public class HVAC {
                 break;
 
             }
-            case 3: {
+            case 3:{
+                System.out.println("Enter address of Water Heater Unit");
+                String address = getStringInput();
+                System.out.println("Enter description of problem");
+                String problem = getStringInput();
+                System.out.println("Enter age of the Water Heater unit");
+                String age = getStringInput();
+
+
+                WaterHeater WH = new WaterHeater(address, problem, new Date(), age);
+                todayServiceCalls.add(WH);
+                System.out.println("Added the following Water Heater unit to list of calls:\n" + WH);
+                break;
+            }
+            case 4: {
                 return;
 
             }
@@ -222,6 +235,7 @@ public class HVAC {
                 }
             } catch (NumberFormatException ime) {
                 System.out.println("Please type a positive number");
+                // String dumpRestOfInput = scanner.nextLine();  //Force scanner to throw away the last (invalid) input
             }
         }
 
@@ -241,6 +255,7 @@ public class HVAC {
                 }
             } catch (NumberFormatException ime) {
                 System.out.println("Please type a positive number");
+                // String dumpRestOfInput = scanner.nextLine();  //Force scanner to throw away the last (invalid) input
             }
         }
 
